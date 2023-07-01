@@ -1,6 +1,9 @@
-def solution(answers):
-    answer = []
-    silly1 = [1, 2, 3, 4, 5]
-    silly2 = [2, 1, 2, 3, 2, 4, 2, 5]
-    silly3 = [3, 3, 1,1,2,2,4,4,5,5]
-    return answer
+rows = 10
+cols = 5
+arr = [[j for j in range(cols)] for i in range(rows)]
+print(arr)
+
+for i in range(cols):
+    arr[i] = list(map(int, input().split()))
+    
+arr = [list(map(int, input().split())) for _ in range(cols)]
