@@ -3,21 +3,18 @@ input = sys.stdin.readline
  
 n, m = map(int, input().split())
 num = sorted(list(map(int, input().split())))
-tmp = []
-visited =[False for _ in range(1000001)]
+tmp =[]
  
 def dfs():
-    start =0
     if len(tmp) == m:
-        print(*tmp)
+        print(' '.join(map(str, tmp)))
         return
- 
+    prev =0
+    
     for i in range(n):
-        if not visited[i] and start != num[i]:
+        if prev != num[i]:
             tmp.append(num[i])
-            visited[i]=True
-            start = num[i]
+            prev = num[i]
             dfs()
-            visited[i]=False
             tmp.pop()
 dfs()
