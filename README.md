@@ -10,6 +10,4 @@ Coding Study
 목적 : 코딩 실패의 원인 분석 및 코드의 효율성 향상
 
 
-조급하지 말고 꾸준하게 하기
-
-https://school.programmers.co.kr/learn/courses/30/lessons/12948?language=cpp
+꾸준하게 하기
