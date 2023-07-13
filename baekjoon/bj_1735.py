@@ -1,12 +1,18 @@
 import sys
-read = sys.stdin.readline
+input = sys.stdin.readline
 
-def gcd(x, y):
-    while y >0 :
-        x, y = y, x%y
-    return x
+a, b = map(int, input().split())
+c,d = map(int, input().split())
 
-a,b = map(int, read().split())
-c, d = map(int, read().split())
-n = 0
-ans = a*
+def gcd(b,d ):
+    if b < d:
+        b,d = d,b
+    if d ==0:
+        return b
+    else:
+        return gcd(d, b%d)
+
+top =a*d+ c*b
+bottom = b*d 
+gcd1 = gcd(top, bottom)
+print(top//gcd1,bottom//gcd1)
