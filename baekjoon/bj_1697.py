@@ -3,10 +3,8 @@ from collections import deque
 input = sys.stdin.readline
 
 n, k = map(int, input().split())
-board = [0 for i in range(100000)]
+board = [0 for i in range(100001)]
 
-cnt =0
-answer= []
 def bfs(n):
     q = deque([n])
     while q:
@@ -18,7 +16,6 @@ def bfs(n):
                 board[nx] = board[x]+1
                 q.append(nx)
         
-
 print(bfs(n))
             
         
