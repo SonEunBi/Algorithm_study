@@ -1,33 +1,30 @@
-from collections import deque
 import sys
-read = sys.stdin.readline
+input = sys.stdin.readline
+sys.setrecursionlimit(100000)
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0,0]
+n = int(input())
+board = [list(map(int, input().split())) for i in range(n)]
 
-n = map(int, read().split())
-graph=[[0]*(n+1) for _ in range(n+1)]
-visited=[0]*(n+1)
-
-for _ in range(n):
-    a, b = map(int, read().split()) 
-    graph[a][b] = 1
-    graph[b][a] =1
-    
-chk =0
-water =0
-def dfs(x, y):
-    global chk
-    chk += 1
+def dfs(x, y, h):
+    dx = [1, -1, 0,0]
+    dy = [0,0,1,-1]
     for i in range(4):
-        dx = x + x[i]
-        dy = y + y[i]
-        dfs(dx, dy)
-    return True
+        nx = dx[i] + x
+        ny = dy[i] + y
+        if 0 <= nx < n and 0<= ny < n and board[nx][ny] > h and not visited[nx][ny]:
+            visited[nx][ny]=1
+            dfs(nx, ny, h)
+            
+answer = 1
+for k in range(1, 101):
+    visited = [[0]*n for _ in range(n)]
+    cnt =0
+    for i in range(n):
+        for j in range(n):
+            if board[i][j] > k and not visited[i][j]:
+                cnt+=1
+                visited[i][j]=1
+                dfs(i, j, k)
+    answer = max(cnt, answer)
 
-for i in range(n):
-    for j in range(n):
-        if dfs(i, j)==True:
-            
-            
-            
+print(answer)
