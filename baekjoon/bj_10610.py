@@ -1,16 +1,17 @@
 import sys
-read= sys.stdin.readline
+from itertools import permutations
+input = sys.stdin.readline
 
-n = read().strip()
+n = list(input().strip('\n'))
+n.sort(reverse=True)
 ans =0
-
+res =[]
 if '0' in n:
-    for i in range(len(n)):
-        ans += int(n[i])
-        if ans %3 == 0:
-            n = list(map(int, n))
-            n.sort(reverse=True)
-            n = list(map(str, n))
-            print(''.join(n))
-else:
+    n = list(map(int, n))
+    if sum(n) %3==0:
+        print(''.join(map(str, n)))
+    else:
+        print('-1')
+else: 
     print('-1')
+    
