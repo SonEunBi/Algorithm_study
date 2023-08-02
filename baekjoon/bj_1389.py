@@ -2,28 +2,20 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 
+INF = int(1e9)
 n, m = map(int, input().split())
-graph = [[] for _ in range(n+1)]
-visited =[False for _ in range(n+1)]
+graph = [[INF]*(n+1) for _ in range(n+1)]
 lv =[]
 
 for _ in range(m):
     a,b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
-    
-def bfs(i, cnt):
-    q = deque()
-    q.append(i)
-    while q:
-        x = q.popleft()
-        visited[x] =True
-        for nxt in graph[x]:
-            if not visited[nxt]:
-                visited.append(nxt)
-                q.append(nxt)
-                lv[nxt] = lv[x]+1
-    
+    graph[a][b] =1
+    graph[b][a] =1
 
     
-bfs(1 , 0)
+for k in range(1,n+1):
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+            
+print(graph)
