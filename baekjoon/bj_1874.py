@@ -2,23 +2,25 @@ import sys
 input = sys.stdin.readline
 
 n =int(input())
-answer =[]
 stack =[]
 now =1
+ans = []
 flag =0
-for i in range(n):
-    x = int(input())
-    while now <= x:
+for i in range(1, n+1):
+    dst = int(input().rstrip())
+    
+    while now <= dst:
         stack.append(now)
         now+=1
-        answer.append('+')
-        
-    if stack[-1] == now:
+        ans.append('+')
+    if stack[-1] == dst:
         stack.pop()
-        answer.append('-')
+        ans.append('-')
     else:
-        print('NO')
         flag =1
-        break
+        break    
+    
 if flag ==0:
-    print('\n'.join(answer))
+    print('\n'.join(ans))
+else:
+    print('NO')
