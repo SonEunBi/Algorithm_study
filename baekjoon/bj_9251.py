@@ -1,12 +1,13 @@
-a = ' ' + input().rstrip()
-b = ' ' +input().rstrip()
+a = input().rstrip()
+b = input().rstrip()
 
-dp =[[0]*(len(a)) for _ in range(len(b))]
-for i in range(1, len(b)):
-    for j in range(1, len(a)):
+dp =[[0]*(len(b)+1) for _ in range(len(a)+1)]
+for i in range(1, len(a)+1):
+    for j in range(1, len(b)+1):
         if a[i-1] == b[j-1]:
             dp[i][j] = dp[i-1][j-1] +1
         else:
             dp[i][j] = max(dp[i][j-1], dp[i-1][j])
-            
-print()
+      
+print(dp[-1][-1])
+print(*dp)
