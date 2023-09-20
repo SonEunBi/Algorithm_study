@@ -1,12 +1,13 @@
-import sys
-input = sys.stdin.readline
+from fractions import Fraction
 
-a, b = map(int, input().split())
-digit  = int(input())
-n =1
-while a*n <= b:
-    n+=1
-    if a*n == b:
-        print(n)
-        break
-    elif n <= a-1
+def approximate_fraction(numerator, denominator, decimal_places):
+    fraction = Fraction(numerator, denominator)
+    result = round(fraction, decimal_places)
+    
+    return result
+
+numerator, denominator = map(int, input().split())
+decimal_places = int(input())
+
+result = approximate_fraction(numerator, denominator, decimal_places)
+print(float(result)) 
